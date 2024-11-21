@@ -14,7 +14,7 @@ val kotlinVersion = project.properties.get("kotlinVersion")
 repositories {
     mavenLocal()
     mavenCentral()
-        maven {
+    maven {
         name = "GitHubPackages"
         url = uri("https://maven.pkg.github.com/monta-app/library-micronaut")
         credentials {
@@ -38,7 +38,12 @@ dependencies {
     compileOnly("io.micronaut:micronaut-http-client")
     runtimeOnly("ch.qos.logback:logback-classic")
     runtimeOnly("com.fasterxml.jackson.module:jackson-module-kotlin")
+
+    // Test dependencies
     testImplementation("io.micronaut:micronaut-http-client")
+    testImplementation("io.micronaut.test:micronaut-test-kotest5:4.4.4")
+    testImplementation("io.kotest:kotest-runner-junit5:5.6.2")
+    testImplementation("io.kotest:kotest-assertions-core:5.6.2")
 }
 
 
