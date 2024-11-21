@@ -14,6 +14,17 @@ val kotlinVersion = project.properties.get("kotlinVersion")
 repositories {
     mavenLocal()
     mavenCentral()
+        maven {
+        name = "GitHubPackages"
+        url = uri("https://maven.pkg.github.com/monta-app/library-micronaut")
+        credentials {
+            username = System.getenv("GHL_USERNAME") ?: project.findProperty("gpr.user") as String?
+            password = System.getenv("GHL_PASSWORD") ?: project.findProperty("gpr.key") as String?
+        }
+    }
+    maven {
+        url = uri("https://packages.confluent.io/maven")
+    }
 }
 
 dependencies {
