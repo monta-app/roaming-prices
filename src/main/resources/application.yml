@@ -1,0 +1,7 @@
+micronaut:
+  application:
+    name: service-roaming-prices
+  server:
+    port: 8080
+    environment:
+      log-configurations: true

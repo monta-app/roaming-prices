@@ -28,6 +28,7 @@ repositories {
 }
 
 dependencies {
+    runtimeOnly("org.yaml:snakeyaml")
     ksp("io.micronaut:micronaut-http-validation")
     ksp("io.micronaut.serde:micronaut-serde-processor")
     implementation("io.micronaut.kotlin:micronaut-kotlin-runtime")
@@ -78,3 +79,33 @@ tasks.named<io.micronaut.gradle.docker.NativeImageDockerfile>("dockerfileNative"
 }
 
 
+tasks {
+    withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+        kotlinOptions {
+            jvmTarget = "21"
+        }
+    }
+
+    withType<com.google.devtools.ksp.gradle.KspTaskJvm> {
+        kotlinOptions {
+            jvmTarget = "21"
+        }
+    }
+}
+
+java {
+    sourceCompatibility = JavaVersion.toVersion("21")
+    targetCompatibility = JavaVersion.toVersion("21")
+}
+
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(21))
+    }
+}
+
+kotlin {
+    jvmToolchain {
+        languageVersion.set(JavaLanguageVersion.of(21))
+    }
+}
