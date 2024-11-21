@@ -12,6 +12,7 @@ group = "com.monta.roamingPrices"
 
 val kotlinVersion = project.properties.get("kotlinVersion")
 repositories {
+    mavenLocal()
     mavenCentral()
 }
 
