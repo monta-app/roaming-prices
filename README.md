@@ -26,3 +26,9 @@ use this command:
 ```shell
 ./gradlew run
 ```
+
+------------------
+how to run the tests:
+```shell
+./gradlew test
+```
