@@ -5,6 +5,8 @@ plugins {
     id("com.github.johnrengelman.shadow") version "8.1.1"
     id("io.micronaut.application") version "4.4.4"
     id("io.micronaut.aot") version "4.4.4"
+    id("org.jetbrains.kotlin.plugin.jpa") version "2.0.21"
+    id("org.flywaydb.flyway") version "9.22.0"
 }
 
 version = "0.1"
@@ -38,6 +40,17 @@ dependencies {
     compileOnly("io.micronaut:micronaut-http-client")
     runtimeOnly("ch.qos.logback:logback-classic")
     runtimeOnly("com.fasterxml.jackson.module:jackson-module-kotlin")
+
+    implementation("io.micronaut:micronaut-inject-java")
+    // Database Libraries
+    runtimeOnly("mysql:mysql-connector-java:8.0.33")
+    implementation("io.micronaut.data:micronaut-data-hibernate-jpa")
+    implementation("javax.annotation:javax.annotation-api")
+    implementation("io.micronaut.configuration:micronaut-jdbc-hikari:2.2.6")
+    implementation("io.micronaut.flyway:micronaut-flyway")
+    implementation("org.flywaydb:flyway-core:10.21.0")
+    runtimeOnly("org.flywaydb:flyway-mysql")
+
 
     // Test dependencies
     testImplementation("io.micronaut:micronaut-http-client")
