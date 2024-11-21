@@ -1,5 +1,5 @@
 applicationType: default
-defaultPackage: com.monta.roamingprices
+defaultPackage: com.monta.roamingPrices
 testFramework: kotest
 sourceLanguage: kotlin
 buildTool: gradle_kotlin

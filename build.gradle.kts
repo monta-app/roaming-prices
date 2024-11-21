@@ -8,7 +8,7 @@ plugins {
 }
 
 version = "0.1"
-group = "com.monta.roamingprices"
+group = "com.monta.roamingPrices"
 
 val kotlinVersion = project.properties.get("kotlinVersion")
 repositories {
@@ -30,7 +30,7 @@ dependencies {
 
 
 application {
-    mainClass = "com.monta.roamingprices.ApplicationKt"
+    mainClass = "com.monta.roamingPrices.ApplicationKt"
 }
 java {
     sourceCompatibility = JavaVersion.toVersion("21")
@@ -44,7 +44,7 @@ micronaut {
     testRuntime("kotest5")
     processing {
         incremental(true)
-        annotations("com.monta.roamingprices.*")
+        annotations("com.monta.roamingPrices.*")
     }
     aot {
         // Please review carefully the optimizations enabled below

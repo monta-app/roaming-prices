@@ -1,4 +1,4 @@
-package com.monta.roamingprices
+package com.monta.roamingPrices
 
 import io.micronaut.runtime.Micronaut.run
 

@@ -1,4 +1,4 @@
-package com.monta.roamingprices
+package com.monta.roamingPrices
 
 import io.micronaut.runtime.EmbeddedApplication
 import io.micronaut.test.extensions.kotest5.annotation.MicronautTest
