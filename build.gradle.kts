@@ -40,6 +40,7 @@ dependencies {
     compileOnly("io.micronaut:micronaut-http-client")
     runtimeOnly("ch.qos.logback:logback-classic")
     runtimeOnly("com.fasterxml.jackson.module:jackson-module-kotlin")
+    implementation("net.logstash.logback:logstash-logback-encoder:8.0")
 
     implementation("io.micronaut:micronaut-inject-java")
     // Micronaut dependencies
@@ -95,12 +96,23 @@ micronaut {
         replaceLogbackXml = true
     }
 }
-
+micronaut {
+    aot {
+        optimizeServiceLoading = false
+        precomputeOperations = false
+    }
+}
 
 tasks.named<io.micronaut.gradle.docker.NativeImageDockerfile>("dockerfileNative") {
     jdkVersion = "21"
 }
 
+tasks.withType<ProcessResources> {
+    from("src/main/resources")
+}
+tasks.processResources {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
 
 tasks {
     withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
