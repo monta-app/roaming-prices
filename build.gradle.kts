@@ -59,6 +59,8 @@ dependencies {
 
 
     // Test dependencies
+    testImplementation("org.testcontainers:testcontainers:1.19.0")
+    testImplementation("org.testcontainers:mysql:1.19.0")
     testImplementation("io.micronaut:micronaut-http-client")
     testImplementation("io.micronaut.test:micronaut-test-kotest5:4.4.4")
     testImplementation("io.kotest:kotest-runner-junit5:5.6.2")
