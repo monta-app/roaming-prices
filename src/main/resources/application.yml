@@ -13,8 +13,7 @@ datasources:
     password: root
     driverClassName: com.mysql.cj.jdbc.Driver
     dialect: MYSQL
-    schema-generate: CREATE_DROP
-    schema-generate-create-scripts: classpath:schema.sql
+    schema-generate: NONE
 
 
 jpa:
