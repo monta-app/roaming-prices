@@ -42,14 +42,19 @@ dependencies {
     runtimeOnly("com.fasterxml.jackson.module:jackson-module-kotlin")
 
     implementation("io.micronaut:micronaut-inject-java")
-    // Database Libraries
+    // Micronaut dependencies
+    implementation("io.micronaut:micronaut-runtime:4.4.4")
+    implementation("io.micronaut.sql:micronaut-jdbc-hikari:6.0.2")
+    implementation("io.micronaut.data:micronaut-data-hibernate-jpa:4.4.4")
+    implementation("io.micronaut.data:micronaut-data-jdbc:4.4.4")
+    implementation("io.micronaut.flyway:micronaut-flyway:4.4.4")
+
+    // Database drivers
     runtimeOnly("mysql:mysql-connector-java:8.0.33")
-    implementation("io.micronaut.data:micronaut-data-hibernate-jpa")
-    implementation("javax.annotation:javax.annotation-api")
-    implementation("io.micronaut.configuration:micronaut-jdbc-hikari:2.2.6")
-    implementation("io.micronaut.flyway:micronaut-flyway")
-    implementation("org.flywaydb:flyway-core:10.21.0")
     runtimeOnly("org.flywaydb:flyway-mysql")
+
+    // Java annotations
+    implementation("javax.annotation:javax.annotation-api")
 
 
     // Test dependencies
