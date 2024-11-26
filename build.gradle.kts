@@ -41,7 +41,7 @@ dependencies {
     runtimeOnly("ch.qos.logback:logback-classic")
     runtimeOnly("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("net.logstash.logback:logstash-logback-encoder:8.0")
-
+    implementation("org.apache.poi:poi-ooxml:5.3.0")
     implementation("io.micronaut:micronaut-inject-java")
     // Micronaut dependencies
     implementation("io.micronaut:micronaut-runtime:4.4.4")
