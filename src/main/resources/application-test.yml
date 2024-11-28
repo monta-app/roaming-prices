@@ -12,7 +12,9 @@ logging:
 
 datasources:
   default:
-    url: jdbc:mysql://localhost:54541/test
-    username: root
-    password: root
+    jdbcUrl: jdbc:mysql://localhost:54541/test_roaming_prices
+    username: test_root
+    password: test_root
     driver-class-name: com.mysql.cj.jdbc.Driver
+    dialect: MYSQL
+    maximum-pool-size: 10

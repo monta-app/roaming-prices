@@ -13,9 +13,9 @@ import java.sql.DriverManager
 abstract class BaseIT : AnnotationSpec(), BeforeSpecListener, AfterSpecListener {
 
     companion object {
-        const val TEST_DATABASE_NAME = "test"
-        const val TEST_DATABASE_USERNAME = "root"
-        const val TEST_DATABASE_PASSWORD = "root"
+        const val TEST_DATABASE_NAME = "test_roaming_prices"
+        const val TEST_DATABASE_USERNAME = "test_root"
+        const val TEST_DATABASE_PASSWORD = "test_root"
         const val TEST_DATABASE_PORT = "54541"
 
         val mysqlContainer: MySQLContainer<Nothing> = MySQLContainer<Nothing>("mysql:8.0").apply {
