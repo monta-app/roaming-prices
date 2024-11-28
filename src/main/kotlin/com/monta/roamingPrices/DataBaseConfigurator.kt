@@ -10,6 +10,7 @@ class DataBaseConfigurator(
     private val databaseConfiguration: DatabaseConfiguration
 ) {
     val defaultDataSource: HikariDataSource by lazy {
+        println("$databaseConfiguration")
         HikariDataSource(
             HikariConfig().apply {
                 jdbcUrl = databaseConfiguration.jdbcUrl
@@ -36,11 +37,16 @@ class DataBaseConfigurator(
 
     fun startMigration() {
         println("Starting migration")
-        Flyway.configure().locations(
-            "classpath:db/migration"
-        ).dataSource(
-            defaultDataSource
-        ).validateOnMigrate(true).load().migrate()
+        try {
 
+            Flyway.configure().locations(
+                "classpath:db/migration"
+            ).dataSource(
+                defaultDataSource
+            ).validateOnMigrate(true).load().migrate()
+        } catch (e: Exception) {
+            println("Migration failed")
+            e.printStackTrace()
+        }
     }
 }

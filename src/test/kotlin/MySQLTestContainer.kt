@@ -8,8 +8,6 @@ object MySQLTestContainer {
             withUsername("test")
             withPassword("test")
             start()
-            println("=================================================================================")
-            println("MySQL container running at: ${instance.jdbcUrl}")
         }
     }
 }

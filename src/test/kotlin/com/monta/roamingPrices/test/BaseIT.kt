@@ -9,7 +9,7 @@ import io.kotest.core.spec.Spec
 import java.sql.Connection
 import java.sql.DriverManager
 
-@MicronautTest
+@MicronautTest(environments = ["test"])
 abstract class BaseIT : AnnotationSpec(), BeforeSpecListener, AfterSpecListener {
 
     companion object {
