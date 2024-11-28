@@ -4,19 +4,16 @@ import jakarta.persistence.Column
 import jakarta.persistence.Entity
 import jakarta.persistence.EnumType
 import jakarta.persistence.Enumerated
-import jakarta.persistence.FetchType
-import jakarta.persistence.ManyToOne
 import jakarta.persistence.Table
-import java.util.UUID
+import java.util.UUID.randomUUID
 import jakarta.persistence.Id
-import jakarta.persistence.JoinColumn
 
 @Entity
 @Table(name = "pricing_component")
 data class PricingComponent(
     @Id
     @Column(nullable = false, updatable = false, unique = true)
-    val id: UUID = UUID.randomUUID(),
+    val id: String = randomUUID().toString(),
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
@@ -24,8 +21,4 @@ data class PricingComponent(
 
     @Column(nullable = false)
     val amount: Float,
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "pricing_id", nullable = false)
-    val pricing: Pricing
 )

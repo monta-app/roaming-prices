@@ -9,6 +9,7 @@ import java.util.UUID.randomUUID
 import jakarta.persistence.CascadeType.ALL
 import jakarta.persistence.EnumType
 import jakarta.persistence.Enumerated
+import jakarta.persistence.JoinColumn
 
 @Entity
 @Table(name = "pricing")
@@ -38,7 +39,7 @@ data class Pricing(
     @Column(nullable = false, unique = true)
     val rawPayload: String,
 
-
-    @OneToMany(mappedBy = "pricing", cascade = [ALL], orphanRemoval = true)
-    val pricingComponents: List<PricingComponent> = mutableListOf()
+    @OneToMany(cascade = [ALL], orphanRemoval = true)
+    @JoinColumn(name = "pricing_id", nullable = false)
+    val pricingComponents: MutableSet<PricingComponent> = mutableSetOf()
 )
