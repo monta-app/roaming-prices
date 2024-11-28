@@ -3,3 +3,16 @@ micronaut:
     port: 8082
   environment:
     active: test
+
+logging:
+  level:
+    root: DEBUG
+    io.micronaut.data: DEBUG
+    org.flywaydb: DEBUG
+
+datasources:
+  default:
+    url: jdbc:mysql://localhost:54541/test
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver

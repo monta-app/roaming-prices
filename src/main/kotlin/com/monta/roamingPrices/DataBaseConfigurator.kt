@@ -41,5 +41,6 @@ class DataBaseConfigurator(
         ).dataSource(
             defaultDataSource
         ).validateOnMigrate(true).load().migrate()
+
     }
 }

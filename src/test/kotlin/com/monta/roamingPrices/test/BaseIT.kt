@@ -4,7 +4,6 @@ import io.kotest.core.listeners.AfterSpecListener
 import io.kotest.core.listeners.BeforeSpecListener
 import io.kotest.core.spec.style.AnnotationSpec
 import io.micronaut.test.extensions.kotest5.annotation.MicronautTest
-import org.flywaydb.core.Flyway
 import org.testcontainers.containers.MySQLContainer
 import io.kotest.core.spec.Spec
 import java.sql.Connection
@@ -24,21 +23,19 @@ abstract class BaseIT : AnnotationSpec(), BeforeSpecListener, AfterSpecListener 
             withUsername(TEST_DATABASE_USERNAME)
             withPassword(TEST_DATABASE_PASSWORD)
             portBindings = listOf("$TEST_DATABASE_PORT:3306")
-            withReuse(true)
+            withReuse(false)
             start()
         }
 
         init {
             println("MySQL container running at: ${mysqlContainer.jdbcUrl}")
+            println("MySQL username: $TEST_DATABASE_USERNAME")
+            println("MySQL password: $TEST_DATABASE_PASSWORD")
         }
     }
 
     override suspend fun beforeSpec(spec: Spec) {
-        println("Running Flyway migrations")
-        Flyway.configure()
-            .dataSource(mysqlContainer.jdbcUrl, mysqlContainer.username, mysqlContainer.password)
-            .load()
-            .migrate()
+        println("Anything that needs to be done before all integration tests dpne here")
     }
 
 
@@ -57,7 +54,7 @@ abstract class BaseIT : AnnotationSpec(), BeforeSpecListener, AfterSpecListener 
             val tables = stmt.executeQuery(
                 "SELECT table_name FROM information_schema.tables WHERE table_schema = '$TEST_DATABASE_NAME';"
             )
-
+            println("cleaning tables: $tables")
             val truncateStatements = mutableListOf<String>()
             while (tables.next()) {
                 truncateStatements.add("TRUNCATE TABLE ${tables.getString(1)};")
